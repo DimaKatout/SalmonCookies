@@ -10,7 +10,7 @@ var Seattle = {
     },
 
     cokPurchasedPerHour: function () {
-        var h =Math.floor((this.numberOfCustPerHour()) * (this.avgCokPerCust));
+        var h = Math.floor((this.numberOfCustPerHour()) * (this.avgCokPerCust));
         //alert('number of purchased cookies per hour');
         console.log(h)
         //alert(h);
@@ -80,7 +80,7 @@ Tokyo = {
     },
 
     cokPurchasedPerHour: function () {
-        var h =Math.floor(  (this.numberOfCustPerHour()) * (this.avgCokPerCust));
+        var h = Math.floor((this.numberOfCustPerHour()) * (this.avgCokPerCust));
         //alert('number of purchased cookies per hour');
         console.log(h)
         //alert(h);
@@ -137,7 +137,7 @@ Dubai =
     },
 
     cokPurchasedPerHour: function () {
-        var h =Math.floor((this.numberOfCustPerHour()) * (this.avgCokPerCust));
+        var h = Math.floor((this.numberOfCustPerHour()) * (this.avgCokPerCust));
         //alert('number of purchased cookies per hour');
         console.log(h)
         //alert(h);
@@ -180,7 +180,8 @@ Dubai.createList();
 
 
 
-Paris = {  minHourlyCus: 3,
+Paris = {
+    minHourlyCus: 3,
     maxHourlyCus: 24,
     avgCokPerCust: 1.2,
     numberOfCustPerHour: function () {
@@ -191,7 +192,7 @@ Paris = {  minHourlyCus: 3,
     },
 
     cokPurchasedPerHour: function () {
-        var h =Math.floor((this.numberOfCustPerHour()) * (this.avgCokPerCust));
+        var h = Math.floor((this.numberOfCustPerHour()) * (this.avgCokPerCust));
         //alert('number of purchased cookies per hour');
         console.log(h)
         //alert(h);
@@ -228,12 +229,14 @@ Paris = {  minHourlyCus: 3,
             liEl.textContent = this.arr[i];
             console.log(liEl);
         }
-    }};
+    }
+};
 
-    Paris.createList();
+Paris.createList();
 
 
-Lima = {  minHourlyCus: 3,
+Lima = {
+    minHourlyCus: 3,
     maxHourlyCus: 24,
     avgCokPerCust: 1.2,
     numberOfCustPerHour: function () {
@@ -244,7 +247,7 @@ Lima = {  minHourlyCus: 3,
     },
 
     cokPurchasedPerHour: function () {
-        var h =Math.floor((this.numberOfCustPerHour()) * (this.avgCokPerCust));
+        var h = Math.floor((this.numberOfCustPerHour()) * (this.avgCokPerCust));
         //alert('number of purchased cookies per hour');
         console.log(h)
         //alert(h);
@@ -281,6 +284,44 @@ Lima = {  minHourlyCus: 3,
             liEl.textContent = this.arr[i];
             console.log(liEl);
         }
-    }};
-Lima.createList();
+    },
+    calculateSum: function () {
+        var sum = 0;
+        arr = [];
+        for (var i = 6; i < 12; i++) {
+            var numCokies = this.cokPurchasedPerHour()
+            sum = sum + numCokies;
+            //alert(i + 'am:' + numCokies + 'cookies');
+            arr.push(`${i} am: ${numCokies} cookies`);
 
+
+
+        }
+        for (var i = 12; i < 13; i++) {
+            var numCokies = this.cokPurchasedPerHour();
+            sum = sum + numCokies;
+            arr.push(`${i} pm: ${numCokies} cookies`);
+
+
+            //alert(i + 'pm:' + numCokies + 'cookies');
+        }
+        for (var i = 1; i < 8; i++) {
+            var numCokies = this.cokPurchasedPerHour();
+            sum = sum + numCokies;
+            arr.push(`${i} pm: ${numCokies} cookies`);
+
+
+            //alert(i + 'pm:' + numCokies + 'cookies');
+        }
+
+
+        arr.push(`Total:${sum} + 'cookies`);
+        alert(arr);
+
+        //alert('Total:' + sum + 'cookies' );
+    }
+
+
+};
+Lima.createList();
+Lima.calculateSum();
