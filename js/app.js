@@ -47,11 +47,71 @@ var Seattle = {
             liEl.textContent = this.arr[i];
             console.log(liEl);
         }
+    },
+    arrr: [],
+    calculateSum: function () {
+        var sum = 0;
+        this.arrr = [];
+        for (var i = 6; i < 12; i++) {
+            var numCokies = this.cokPurchasedPerHour()
+            sum = sum + numCokies;
+            //alert(i + 'am:' + numCokies + 'cookies');
+            this.arrr.push(`${i} am: ${numCokies} cookies`);
+            
+            
+            
+        }
+        for (var i = 12; i < 13; i++) {
+            var numCokies = this.cokPurchasedPerHour();
+            sum = sum + numCokies;
+            this.arrr.push(`${i} pm: ${numCokies} cookies`);
+            
+            
+            //alert(i + 'pm:' + numCokies + 'cookies');
+        }
+        for (var i = 1; i < 8; i++) {
+            var numCokies = this.cokPurchasedPerHour();
+            sum = sum + numCokies;
+            this.arrr.push(`${i} pm: ${numCokies} cookies`);
+
+            
+            //alert(i + 'pm:' + numCokies + 'cookies');
+        }
+        
+        
+        this.arrr.push(`Total:  ${sum}  'cookies`);
+        //alert(this.arrr);
+        
+        //alert('Total:' + sum + 'cookies' );
+    },
+    
+    sales: function () {
+        var containerr = document.getElementById("seattleSales");
+        var ullEl = document.createElement("ul");
+        containerr.appendChild(ullEl);
+       
+        this.calculateSum(); 
+        for (var i = 0; i < this.arrr.length; i++) {
+            console.log("i  ", i, "   ", this.arrr[i]);
+            var liiEl = document.createElement("li");
+            ullEl.appendChild(liiEl);
+            liiEl.textContent = this.arrr[i];
+            console.log(liiEl);
+            
+        }
+        
+        
     }
+    
+    
 };
 
-
 Seattle.createList();
+Seattle.calculateSum();
+Seattle.sales();
+
+
+
 // console.log(Seattle.numberOfCustPerHour(1,2));
 
 // Seattle.prototype.HI = function(){
@@ -117,10 +177,70 @@ Tokyo = {
             liEl.textContent = this.arr[i];
             console.log(liEl);
         }
-    }
+    },arrr: [],
+    calculateSum: function () {
+        var sum = 0;
+        this.arrr = [];
+        for (var i = 6; i < 12; i++) {
+            var numCokies = this.cokPurchasedPerHour()
+            sum = sum + numCokies;
+            //alert(i + 'am:' + numCokies + 'cookies');
+            this.arrr.push(`${i} am: ${numCokies} cookies`);
+            
+            
+            
+        }
+        for (var i = 12; i < 13; i++) {
+            var numCokies = this.cokPurchasedPerHour();
+            sum = sum + numCokies;
+            this.arrr.push(`${i} pm: ${numCokies} cookies`);
+            
+            
+            //alert(i + 'pm:' + numCokies + 'cookies');
+        }
+        for (var i = 1; i < 8; i++) {
+            var numCokies = this.cokPurchasedPerHour();
+            sum = sum + numCokies;
+            this.arrr.push(`${i} pm: ${numCokies} cookies`);
 
+            
+            //alert(i + 'pm:' + numCokies + 'cookies');
+        }
+        
+        
+        this.arrr.push(`Total:  ${sum}  'cookies`);
+        //alert(this.arrr);
+        
+        //alert('Total:' + sum + 'cookies' );
+    },
+    
+    sales: function () {
+        var containerr = document.getElementById("tokyoSales");
+        var ullEl = document.createElement("ul");
+        containerr.appendChild(ullEl);
+       
+        this.calculateSum(); 
+        for (var i = 0; i < this.arrr.length; i++) {
+            console.log("i  ", i, "   ", this.arrr[i]);
+            var liiEl = document.createElement("li");
+            ullEl.appendChild(liiEl);
+            liiEl.textContent = this.arrr[i];
+            console.log(liiEl);
+            
+        }
+        
+        
+    }
+    
+    
 };
+
+
 Tokyo.createList();
+Tokyo.calculateSum();
+Tokyo.sales();
+
+
 
 
 
@@ -174,9 +294,71 @@ Dubai =
             liEl.textContent = this.arr[i];
             console.log(liEl);
         }
+    },
+    arrr: [],
+    calculateSum: function () {
+        var sum = 0;
+        this.arrr = [];
+        for (var i = 6; i < 12; i++) {
+            var numCokies = this.cokPurchasedPerHour()
+            sum = sum + numCokies;
+            //alert(i + 'am:' + numCokies + 'cookies');
+            this.arrr.push(`${i} am: ${numCokies} cookies`);
+            
+            
+            
+        }
+        for (var i = 12; i < 13; i++) {
+            var numCokies = this.cokPurchasedPerHour();
+            sum = sum + numCokies;
+            this.arrr.push(`${i} pm: ${numCokies} cookies`);
+            
+            
+            //alert(i + 'pm:' + numCokies + 'cookies');
+        }
+        for (var i = 1; i < 8; i++) {
+            var numCokies = this.cokPurchasedPerHour();
+            sum = sum + numCokies;
+            this.arrr.push(`${i} pm: ${numCokies} cookies`);
+
+            
+            //alert(i + 'pm:' + numCokies + 'cookies');
+        }
+        
+        
+        //this.arrr.push(`Total:  ${sum}  'cookies`);
+        //alert(this.arrr);
+        
+        //alert('Total:' + sum + 'cookies' );
+    },
+    
+    sales: function () {
+        var containerr = document.getElementById("dubaiSales");
+        var ullEl = document.createElement("ul");
+        containerr.appendChild(ullEl);
+       
+        this.calculateSum(); 
+        for (var i = 0; i < this.arrr.length; i++) {
+            console.log("i  ", i, "   ", this.arrr[i]);
+            var liiEl = document.createElement("li");
+            ullEl.appendChild(liiEl);
+            liiEl.textContent = this.arrr[i];
+            console.log(liiEl);
+            
+        }
+        
+        
     }
+    
+    
 };
+
+
 Dubai.createList();
+Dubai.calculateSum();
+Dubai.sales();
+    
+
 
 
 
@@ -229,10 +411,71 @@ Paris = {
             liEl.textContent = this.arr[i];
             console.log(liEl);
         }
+    },
+    arrr: [],
+    calculateSum: function () {
+        var sum = 0;
+        this.arrr = [];
+        for (var i = 6; i < 12; i++) {
+            var numCokies = this.cokPurchasedPerHour()
+            sum = sum + numCokies;
+            //alert(i + 'am:' + numCokies + 'cookies');
+            this.arrr.push(`${i} am: ${numCokies} cookies`);
+            
+            
+            
+        }
+        for (var i = 12; i < 13; i++) {
+            var numCokies = this.cokPurchasedPerHour();
+            sum = sum + numCokies;
+            this.arrr.push(`${i} pm: ${numCokies} cookies`);
+            
+            
+            //alert(i + 'pm:' + numCokies + 'cookies');
+        }
+        for (var i = 1; i < 8; i++) {
+            var numCokies = this.cokPurchasedPerHour();
+            sum = sum + numCokies;
+            this.arrr.push(`${i} pm: ${numCokies} cookies`);
+
+            
+            //alert(i + 'pm:' + numCokies + 'cookies');
+        }
+        
+        
+        this.arrr.push(`Total:  ${sum}  'cookies`);
+        //alert(this.arrr);
+        
+        //alert('Total:' + sum + 'cookies' );
+    },
+    
+    sales: function () {
+        var containerr = document.getElementById("parisSales");
+        var ullEl = document.createElement("ul");
+        containerr.appendChild(ullEl);
+       
+        this.calculateSum(); 
+        for (var i = 0; i < this.arrr.length; i++) {
+            console.log("i  ", i, "   ", this.arrr[i]);
+            var liiEl = document.createElement("li");
+            ullEl.appendChild(liiEl);
+            liiEl.textContent = this.arrr[i];
+            console.log(liiEl);
+            
+        }
+        
+        
     }
+    
+    
 };
+Paris.createList();
 
 Paris.createList();
+Paris.calculateSum();
+Paris.sales();
+
+
 
 
 Lima = {
@@ -317,13 +560,13 @@ Lima = {
         
         
         this.arrr.push(`Total:  ${sum}  'cookies`);
-        alert(this.arrr);
+        //alert(this.arrr);
         
         //alert('Total:' + sum + 'cookies' );
     },
     
     sales: function () {
-        var containerr = document.getElementById("sales");
+        var containerr = document.getElementById("limaSales");
         var ullEl = document.createElement("ul");
         containerr.appendChild(ullEl);
        
