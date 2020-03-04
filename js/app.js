@@ -224,7 +224,7 @@ Paris = {
         for (let i = 0; i < this.arr.length; i++) {
             console.log("i  ", i, "   ", Paris.arr[i]);
             var liEl = document.createElement("li");
-
+            
             ulEl.appendChild(liEl);
             liEl.textContent = this.arr[i];
             console.log(liEl);
@@ -242,19 +242,19 @@ Lima = {
     numberOfCustPerHour: function () {
         var num = Math.floor(Math.random() * (this.maxHourlyCus
             - this.minHourlyCus)) + this.minHourlyCus;
-        //alert(num);
-        return num;
-    },
-
-    cokPurchasedPerHour: function () {
-        var h = Math.floor((this.numberOfCustPerHour()) * (this.avgCokPerCust));
-        //alert('number of purchased cookies per hour');
-        console.log(h)
-        //alert(h);
-        return h;
-    }
-    ,
-    arr: [],
+            //alert(num);
+            return num;
+        },
+        
+        cokPurchasedPerHour: function () {
+            var h = Math.floor((this.numberOfCustPerHour()) * (this.avgCokPerCust));
+            //alert('number of purchased cookies per hour');
+            console.log(h)
+            //alert(h);
+            return h;
+        }
+        ,
+        arr: [],
     arrFill: function () {
         this.arr.push(`max hourly customer is  ${this.maxHourlyCus}`);
         this.arr.push(`min hourly customer ${this.minHourlyCus} `);
@@ -264,64 +264,85 @@ Lima = {
     },
     //this is wrong we can't call a function except inside function in the object
     /*[`max hourly customer is  ${this.maxHourlyCus}`,
-   `min hourly customer ${this.minHourlyCus} `,
-   `average cookies per customer ${this.avgCokPerCust}`,]
-     `number of customer per hour ${this.numberOfCustPerHour()}`,
+    `min hourly customer ${this.minHourlyCus} `,
+    `average cookies per customer ${this.avgCokPerCust}`,]
+    `number of customer per hour ${this.numberOfCustPerHour()}`,
     `amounts of cookies purchased for each hour ${this.cokPurchasedPerHour() }`]*/
-
+    
     createList: function () {
         var container = document.getElementById("lima")
         var ulEl = document.createElement("ul");
         container.appendChild(ulEl);
         this.arrFill();
         console.log(this.arr)
-
+        
         for (let i = 0; i < this.arr.length; i++) {
             console.log("i  ", i, "   ", Lima.arr[i]);
             var liEl = document.createElement("li");
-
+            
             ulEl.appendChild(liEl);
             liEl.textContent = this.arr[i];
             console.log(liEl);
         }
     },
+    arrr: [],
     calculateSum: function () {
         var sum = 0;
-        arr = [];
+        this.arrr = [];
         for (var i = 6; i < 12; i++) {
             var numCokies = this.cokPurchasedPerHour()
             sum = sum + numCokies;
             //alert(i + 'am:' + numCokies + 'cookies');
-            arr.push(`${i} am: ${numCokies} cookies`);
-
-
-
+            this.arrr.push(`${i} am: ${numCokies} cookies`);
+            
+            
+            
         }
         for (var i = 12; i < 13; i++) {
             var numCokies = this.cokPurchasedPerHour();
             sum = sum + numCokies;
-            arr.push(`${i} pm: ${numCokies} cookies`);
-
-
+            this.arrr.push(`${i} pm: ${numCokies} cookies`);
+            
+            
             //alert(i + 'pm:' + numCokies + 'cookies');
         }
         for (var i = 1; i < 8; i++) {
             var numCokies = this.cokPurchasedPerHour();
             sum = sum + numCokies;
-            arr.push(`${i} pm: ${numCokies} cookies`);
+            this.arrr.push(`${i} pm: ${numCokies} cookies`);
 
-
+            
             //alert(i + 'pm:' + numCokies + 'cookies');
         }
-
-
-        arr.push(`Total:${sum} + 'cookies`);
-        alert(arr);
-
+        
+        
+        this.arrr.push(`Total:  ${sum}  'cookies`);
+        alert(this.arrr);
+        
         //alert('Total:' + sum + 'cookies' );
+    },
+    
+    sales: function () {
+        var containerr = document.getElementById("sales");
+        var ullEl = document.createElement("ul");
+        containerr.appendChild(ullEl);
+       
+        this.calculateSum(); 
+        for (var i = 0; i < this.arrr.length; i++) {
+            console.log("i  ", i, "   ", this.arrr[i]);
+            var liiEl = document.createElement("li");
+            ullEl.appendChild(liiEl);
+            liiEl.textContent = this.arrr[i];
+            console.log(liiEl);
+            
+        }
+        
+        
     }
-
-
+    
+    
 };
 Lima.createList();
 Lima.calculateSum();
+Lima.sales();
+//Lima.sales();
