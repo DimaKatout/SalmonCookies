@@ -94,7 +94,9 @@ Location.prototype.calculateSum=function()
     }
     
     
-    this.arrr.push(`Total:  ${sum}  'cookies`);}
+    this.arrr.push(`Total:  ${sum}  'cookies`);
+
+return this.arrr;}
     //alert(this.arrr);}
 
     Location.prototype.sales=function()
@@ -118,12 +120,15 @@ Location.prototype.calculateSum=function()
     
 
     Location.prototype.render=function()
-    {var dataEl=document.createElement('tr');
+    {
+        var dataEl=document.createElement('tr');
     tableEl.appendChild(dataEl);
-for(let i=0;i<13;i++)
+    var array=this.calculateSum();
+for(let i=0;i<array.length;i++)
 {
 var tdEl=document.createElement('td');
-tdEl.textContent=
+tdEl.textContent=array[i];
+dataEl.appendChild(tdEl);
 
 
 }
@@ -131,12 +136,7 @@ tdEl.textContent=
     }
 
     
-    for(let i=0;i<loc.length;i++){
-        loc[i].createList(3,7);
-        loc[i].sales();
     
-    
-    }
 
 
 
@@ -164,3 +164,10 @@ thEl.textContent=`${i}p.m`};
 
 
 
+for(let i=0;i<loc.length;i++){
+    loc[i].createList(3,7);
+    loc[i].sales();
+    loc[i].render();
+
+
+}
