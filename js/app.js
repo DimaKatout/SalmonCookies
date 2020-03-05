@@ -170,9 +170,17 @@ dataEl.appendChild(tdEl);
 
 }
 for(let i=0;i<this.tot.length;i++)
-{var tdE2=document.createElement('td');
-tdE2.textContent=this.tot[i];
-dataEl.appendChild(tdE2);}
+{var dataE3=document.createElement('tr');
+
+
+tableEl.appendChild(dataE3);
+var tdE3=document.createElement('td');
+tdE3.textContent=this.tot[i];
+dataE3.appendChild(tdE3);
+
+
+
+}
 /*var dataE2=document.createElement('td');
     tableEl.appendChild(dataE2);
     //var tdE2=document.createElement('td');
