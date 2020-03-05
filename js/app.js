@@ -1,9 +1,22 @@
-function Location(minHourlyCus,maxHourlyCus,avgCokPerCust)
-{this.minHourlyCus=minHourlyCus;
+'use strict'
+var loc= [];
+var seattle=new Location('Seattle',23,65,6.3);
+var tokyo=new Location("Tokyo",3,24,1.2);
+var dubai=new Location("Dubai",11,38,3.7);
+var paris=new Location("Paris",20,38,2.3);
+var lima=new Location("Lima",2,16,4.6);
+
+
+
+function Location(locationName,minHourlyCus,maxHourlyCus,avgCokPerCust)
+{this.locationName=locationName;
+this.minHourlyCus=minHourlyCus;
 this.maxHourlyCus=maxHourlyCus;
 this.avgCokPerCust=avgCokPerCust;
-arr=[];
-arrr=[];
+this.arr=[];
+this.arrr=[];
+loc.push(this);
+
 
 }
 
@@ -30,14 +43,18 @@ Location.prototype.cokPurchasedPerHour=function()
 
 Location.prototype.createList=function()
 {
-    var container = document.getElementById("seattle")
+    var container = document.getElementById("location")
+    var h1El=document.createElement('h1');
+    container.appendChild(h1El);
+    h1El.textContent=this.locationName
     var ulEl = document.createElement("ul");
     container.appendChild(ulEl);
+
     this.arrFill();
     console.log(this.arr)
 
     for (let i = 0; i < this.arr.length; i++) {
-        console.log("i  ", i, "   ", Seattle.arr[i]);
+        console.log("i  ", i, "   ", this.arr[i]);
         var liEl = document.createElement("li");
 
         ulEl.appendChild(liEl);
@@ -81,7 +98,10 @@ Location.prototype.calculateSum=function()
     //alert(this.arrr);}
 
     Location.prototype.sales=function()
-    { var containerr = document.getElementById("seattleSales");
+    { var containerr = document.getElementById("locationSales");
+    var h1Ell=document.createElement('h1');
+    containerr.appendChild(h1Ell);
+    h1Ell.textContent=this.locationName;
     var ullEl = document.createElement("ul");
     containerr.appendChild(ullEl);
    
@@ -94,6 +114,13 @@ Location.prototype.calculateSum=function()
         console.log(liiEl);
         
     }}
+
+    for(let i=0;i<loc.length;i++){
+        loc[i].createList(3,7);
+        loc[i].sales();
+    
+    
+    }
 
 
 /*var Seattle = {
@@ -204,9 +231,9 @@ Location.prototype.calculateSum=function()
     
 };*/
 
-Seattle.createList();
-Seattle.calculateSum();
-Seattle.sales();
+//Seattle.createList();
+//Seattle.calculateSum();
+//Seattle.sales();
 
 
 
@@ -226,7 +253,7 @@ Seattle.sales();
 //Seattle.cokPurchasedPerHour();
 //Seattle.createList();
 
-Tokyo = {
+/*Tokyo = {
     minHourlyCus: 3,
     maxHourlyCus: 24,
     avgCokPerCust: 1.2,
@@ -254,11 +281,11 @@ Tokyo = {
         this.arr.push(`amounts of cookies purchased for each hour ${this.cokPurchasedPerHour()}`);
     },
     //this is wrong we can't call a function except inside function in the object
-    /*[`max hourly customer is  ${this.maxHourlyCus}`,
-   `min hourly customer ${this.minHourlyCus} `,
-   `average cookies per customer ${this.avgCokPerCust}`,]
-     `number of customer per hour ${this.numberOfCustPerHour()}`,
-    `amounts of cookies purchased for each hour ${this.cokPurchasedPerHour() }`]*/
+    //[`max hourly customer is  ${this.maxHourlyCus}`,
+   //`min hourly customer ${this.minHourlyCus} `,
+   //`average cookies per customer ${this.avgCokPerCust}`,]
+     //`number of customer per hour ${this.numberOfCustPerHour()}`,
+    //`amounts of cookies purchased for each hour ${this.cokPurchasedPerHour() }`]
 
     createList: function () {
         var container = document.getElementById("tokyo")
@@ -344,9 +371,9 @@ Tokyo.sales();
 
 Dubai =
 {
-    minHourlyCus: 3,
-    maxHourlyCus: 24,
-    avgCokPerCust: 1.2,
+    minHourlyCus: 11,
+    maxHourlyCus: 38,
+    avgCokPerCust: 3.7,
     numberOfCustPerHour: function () {
         var num = Math.floor(Math.random() * (this.maxHourlyCus
             - this.minHourlyCus)) + this.minHourlyCus;
@@ -377,7 +404,7 @@ Dubai =
      `number of customer per hour ${this.numberOfCustPerHour()}`,
     `amounts of cookies purchased for each hour ${this.cokPurchasedPerHour() }`]*/
 
-    createList: function () {
+  /*  createList: function () {
         var container = document.getElementById("dubai")
         var ulEl = document.createElement("ul");
         container.appendChild(ulEl);
@@ -461,9 +488,9 @@ Dubai.sales();
 
 
 Paris = {
-    minHourlyCus: 3,
-    maxHourlyCus: 24,
-    avgCokPerCust: 1.2,
+    minHourlyCus: 20,
+    maxHourlyCus: 38,
+    avgCokPerCust: 2.3,
     numberOfCustPerHour: function () {
         var num = Math.floor(Math.random() * (this.maxHourlyCus
             - this.minHourlyCus)) + this.minHourlyCus;
@@ -494,7 +521,7 @@ Paris = {
      `number of customer per hour ${this.numberOfCustPerHour()}`,
     `amounts of cookies purchased for each hour ${this.cokPurchasedPerHour() }`]*/
 
-    createList: function () {
+   /* createList: function () {
         var container = document.getElementById("paris")
         var ulEl = document.createElement("ul");
         container.appendChild(ulEl);
@@ -577,9 +604,9 @@ Paris.sales();
 
 
 Lima = {
-    minHourlyCus: 3,
-    maxHourlyCus: 24,
-    avgCokPerCust: 1.2,
+    minHourlyCus: 2,
+    maxHourlyCus: 16,
+    avgCokPerCust: 4.6,
     numberOfCustPerHour: function () {
         var num = Math.floor(Math.random() * (this.maxHourlyCus
             - this.minHourlyCus)) + this.minHourlyCus;
@@ -610,7 +637,7 @@ Lima = {
     `number of customer per hour ${this.numberOfCustPerHour()}`,
     `amounts of cookies purchased for each hour ${this.cokPurchasedPerHour() }`]*/
     
-    createList: function () {
+   /* createList: function () {
         var container = document.getElementById("lima")
         var ulEl = document.createElement("ul");
         container.appendChild(ulEl);
@@ -686,4 +713,5 @@ Lima = {
 Lima.createList();
 Lima.calculateSum();
 Lima.sales();
-//Lima.sales();
+//Lima.sales();*/
+
