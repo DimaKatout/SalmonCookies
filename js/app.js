@@ -1,5 +1,6 @@
 'use strict'
 var loc= [];
+var locName=[];
 var seattle=new Location('Seattle',23,65,6.3);
 var tokyo=new Location("Tokyo",3,24,1.2);
 var dubai=new Location("Dubai",11,38,3.7);
@@ -15,7 +16,12 @@ this.maxHourlyCus=maxHourlyCus;
 this.avgCokPerCust=avgCokPerCust;
 this.arr=[];
 this.arrr=[];
+this.tot=[];
+this.sum=0;
+this.totalSum=0;
 loc.push(this);
+locName.push(locationName);
+
 
 
 }
@@ -65,36 +71,41 @@ Location.prototype.createList=function()
 }
 
 Location.prototype.calculateSum=function()
-{ var sum = 0;
+{// var sum = 0;
     this.arrr = [];
     for (var i = 6; i < 12; i++) {
         var numCokies = this.cokPurchasedPerHour()
-        sum = sum + numCokies;
+        this.sum = this.sum + numCokies;
         //alert(i + 'am:' + numCokies + 'cookies');
-        this.arrr.push(`${i} am: ${numCokies} cookies`);
-        
+        //this.arrr.push(`${i} am: ${numCokies} cookies`);
+        this.arrr.push(numCokies);
+
         
         
     }
     for (var i = 12; i < 13; i++) {
         var numCokies = this.cokPurchasedPerHour();
-        sum = sum + numCokies;
-        this.arrr.push(`${i} pm: ${numCokies} cookies`);
+        this.sum =this. sum + numCokies;
+        //this.arrr.push(`${i} pm: ${numCokies} cookies`);
+        this.arrr.push(numCokies);
+
         
         
         //alert(i + 'pm:' + numCokies + 'cookies');
     }
     for (var i = 1; i < 8; i++) {
         var numCokies = this.cokPurchasedPerHour();
-        sum = sum + numCokies;
-        this.arrr.push(`${i} pm: ${numCokies} cookies`);
+        this.sum = this.sum + numCokies;
+        //this.arrr.push(`${i} pm: ${numCokies} cookies`);
+        this.arrr.push(numCokies);
+
 
         
         //alert(i + 'pm:' + numCokies + 'cookies');
     }
     
     
-    this.arrr.push(`Total:  ${sum}  'cookies`);
+    this.arrr.push(this.sum);
 
 return this.arrr;}
     //alert(this.arrr);}
@@ -119,10 +130,36 @@ return this.arrr;}
 
     
 
+    Location.prototype.totalSalesPerHour=function()
+    {  this.arrr
+        for (var i = 1; i < 16; i++) {
+           
+            this.totalSum = this.totalSum + this.arrr[i];
+            //alert(i + 'am:' + numCokies + 'cookies');
+            //this.arrr.push(`${i} am: ${numCokies} cookies`);
+            this.tot.push(this.totalSum);
+    
+            
+            
+        }
+        return this.tot;
+    }
+        
+        
+        //this.arrr.push(this.sum);
+    
+   
+    
+
     Location.prototype.render=function()
     {
         var dataEl=document.createElement('tr');
     tableEl.appendChild(dataEl);
+    var tdE0=document.createElement('td');
+tdE0.textContent=this.locationName;
+dataEl.appendChild(tdE0);
+
+
     var array=this.calculateSum();
 for(let i=0;i<array.length;i++)
 {
@@ -132,6 +169,17 @@ dataEl.appendChild(tdEl);
 
 
 }
+for(let i=0;i<this.tot.length;i++)
+{var tdE2=document.createElement('td');
+tdE2.textContent=this.tot[i];
+dataEl.appendChild(tdE2);}
+/*var dataE2=document.createElement('td');
+    tableEl.appendChild(dataE2);
+    //var tdE2=document.createElement('td');
+tdE2.textContent=this.sum;
+dataE2.appendChild(tdE2);*/
+
+
 
     }
 
@@ -147,6 +195,8 @@ container.appendChild(tableEl);
 
 var headerEl=document.createElement('tr');
 tableEl.appendChild(headerEl);
+var th1El=document.createElement('th');
+headerEl.appendChild(th1El);
 for (let i=6;i<12;i++)
 {var thEl=document.createElement('th');
 headerEl.appendChild(thEl);
@@ -159,6 +209,10 @@ for (let i=1;i<8;i++)
 {var thEl=document.createElement('th');
 headerEl.appendChild(thEl);
 thEl.textContent=`${i}p.m`};
+var thEl=document.createElement('th');
+headerEl.appendChild(thEl);
+thEl.textContent=`Daily location total`;
+    
 
 
 
@@ -168,6 +222,6 @@ for(let i=0;i<loc.length;i++){
     loc[i].createList(3,7);
     loc[i].sales();
     loc[i].render();
+    loc[i].totalSalesPerHour();}
 
 
-}
