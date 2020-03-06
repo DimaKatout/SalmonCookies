@@ -1,6 +1,11 @@
 'use strict'
 var loc= [];
 var locName=[];
+var container = document.getElementById("d");
+
+var tableEl=document.createElement('table');
+container.appendChild(tableEl);
+
 var seattle=new Location('Seattle',23,65,6.3);
 var tokyo=new Location("Tokyo",3,24,1.2);
 var dubai=new Location("Dubai",11,38,3.7);
@@ -11,13 +16,13 @@ var lima=new Location("Lima",2,16,4.6);
 
 function Location(locationName,minHourlyCus,maxHourlyCus,avgCokPerCust)
 {this.locationName=locationName;
-this.minHourlyCus=minHourlyCus;
-this.maxHourlyCus=maxHourlyCus;
-this.avgCokPerCust=avgCokPerCust;
-this.arr=[];
-this.arrr=[];
-this.tot=[];
-this.sum=0;
+    this.minHourlyCus=minHourlyCus;
+    this.maxHourlyCus=maxHourlyCus;
+    this.avgCokPerCust=avgCokPerCust;
+    this.arr=[];
+    this.arrr=[];
+    this.tot=[];
+    this.sum=0;
 this.totalSum=0;
 loc.push(this);
 locName.push(locationName);
@@ -156,8 +161,9 @@ return this.arrr;}
         var dataEl=document.createElement('tr');
     tableEl.appendChild(dataEl);
     var tdE0=document.createElement('td');
-tdE0.textContent=this.locationName;
-dataEl.appendChild(tdE0);
+    dataEl.appendChild(tdE0);
+
+    tdE0.textContent=this.locationName;
 
 
     var array=this.calculateSum();
@@ -169,14 +175,7 @@ dataEl.appendChild(tdEl);
 
 
 }
-for(let i=0;i<this.tot.length;i++)
-{var dataE3=document.createElement('tr');
 
-
-tableEl.appendChild(dataE3);
-var tdE3=document.createElement('td');
-tdE3.textContent=this.tot[i];
-dataE3.appendChild(tdE3);
 
 
 
@@ -189,22 +188,29 @@ dataE2.appendChild(tdE2);*/
 
 
 
-    }
+    
 
     
     
 
 
 
-var container = document.getElementById("d");
+/*var container = document.getElementById("d");
 
 var tableEl=document.createElement('table');
-container.appendChild(tableEl);
+container.appendChild(tableEl);*/
 
-var headerEl=document.createElement('tr');
+
+
+//had lazem a3melo be function
+
+
+function renderHeader()
+{var headerEl=document.createElement('tr');
 tableEl.appendChild(headerEl);
 var th1El=document.createElement('th');
 headerEl.appendChild(th1El);
+th1El.textContent=" ";
 for (let i=6;i<12;i++)
 {var thEl=document.createElement('th');
 headerEl.appendChild(thEl);
@@ -220,8 +226,43 @@ thEl.textContent=`${i}p.m`};
 var thEl=document.createElement('th');
 headerEl.appendChild(thEl);
 thEl.textContent=`Daily location total`;
-    
+}    
 
+
+function renderFooter()
+{var trEl=document.createElement('tr');
+tableEl.appendChild(trEl);
+var tddEl=document.createElement('td');
+trEl.appendChild(tddEl);
+tddEl.textContent="Total";
+/*for(let i=0;i<Location.tot.length;i++)
+{
+var tdE3=document.createElement('td');
+tdE3.textContent=Location.tot[i];
+trEl.appendChild(tdE3);
+
+}*/
+/* 
+for (let j=0;j<arrr.length;i++)
+var sum=0;
+{
+for (let j=0;j<shops.length;j++)
+{sum=sum+shops[i].salesPerHour[i]; 
+}
+var tdE1=create td
+trE1.app
+tdE1.text=sum;
+//back to part 2 min 27 lab 8
+}
+}
+
+
+ */
+
+}
+
+
+renderHeader();
 
 
 
@@ -231,5 +272,9 @@ for(let i=0;i<loc.length;i++){
     loc[i].sales();
     loc[i].render();
     loc[i].totalSalesPerHour();}
+
+    renderFooter();
+
+
 
 
