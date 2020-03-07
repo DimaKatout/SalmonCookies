@@ -2,10 +2,17 @@
 var loc= [];
 var locName=[];
 var form=document.getElementById("locationsForm");
+var sumArray=[];
 
 var tot=[];
 var arrr=[];
+var arr=[];
 var hours=['6a.m','7a.m','8a.m','9a.m','10a.m','11a.m','12p.m','1p.m','2p.m','3p.m','4p.m','5p.m','6p.m','7p.m'];
+var seattle=new Location('Seattle',23,65,6.3);
+var tokyo=new Location("Tokyo",3,24,1.2);
+var dubai=new Location("Dubai",11,38,3.7);
+var paris=new Location("Paris",20,38,2.3);
+var lima=new Location("Lima",2,16,4.6);
 
 var container = document.getElementById("d");
 
@@ -18,14 +25,14 @@ var dubai=new Location("Dubai",11,38,3.7);
 var paris=new Location("Paris",20,38,2.3);
 var lima=new Location("Lima",2,16,4.6);*/
 
-
+//loc heye array kol ma yendaf object bendaf 3aaliha
 
 function Location(locationName,minHourlyCus,maxHourlyCus,avgCokPerCust)
 {this.locationName=locationName;
     this.minHourlyCus=minHourlyCus;
     this.maxHourlyCus=maxHourlyCus;
     this.avgCokPerCust=avgCokPerCust;
-    this.arr=[];
+    //this.arr=[];
     //this.arrr=[];
     //this.tot=[];
     this.sum=0;
@@ -52,11 +59,12 @@ Location.prototype.cokPurchasedPerHour=function()
     return h;}
 
     Location.prototype.arrFill=function()
-    { this.arr.push(`max hourly customer is  ${this.maxHourlyCus}`);
-    this.arr.push(`min hourly customer ${this.minHourlyCus} `);
-    this.arr.push(`average cookies per customer ${this.avgCokPerCust}`);
-    this.arr.push(`number of customer per hour ${this.numberOfCustPerHour()}`);
-    this.arr.push(`amounts of cookies purchased for each hour ${this.cokPurchasedPerHour()}`);
+    { arr.push(`max hourly customer is  ${this.maxHourlyCus}`);
+    //this.arr.push(`min hourly customer ${this.minHourlyCus} `);
+    arr.push(`min hourly customer ${this.minHourlyCus} `);
+    arr.push(`average cookies per customer ${this.avgCokPerCust}`);
+    arr.push(`number of customer per hour ${this.numberOfCustPerHour()}`);
+    arr.push(`amounts of cookies purchased for each hour ${this.cokPurchasedPerHour()}`);
 }
 
 Location.prototype.createList=function()
@@ -69,23 +77,24 @@ Location.prototype.createList=function()
     container.appendChild(ulEl);
 
     this.arrFill();
-    console.log(this.arr)
+    //console.log(this.arr)
 
-    for (let i = 0; i < this.arr.length; i++) {
-        console.log("i  ", i, "   ", this.arr[i]);
+    for (let i = 0; i < arr.length; i++) {
+        //console.log("i  ", i, "   ", this.arr[i]);
         var liEl = document.createElement("li");
 
         ulEl.appendChild(liEl);
-        liEl.textContent = this.arr[i];
+        liEl.textContent = arr[i];
         console.log(liEl);
     }
 
 }
 
 Location.prototype.calculateSum=function()
-{// var sum = 0;
+{ this.sum = 0;
     //this.arrr = [];
-    /*for (var i = 6; i < 12; i++) {
+    arrr=[];
+    for (var i = 6; i < 12; i++) {
         var numCokies = this.cokPurchasedPerHour()
         this.sum = this.sum + numCokies;
         //alert(i + 'am:' + numCokies + 'cookies');
@@ -99,7 +108,7 @@ Location.prototype.calculateSum=function()
     for (var i = 12; i < 13; i++) {
         var numCokies = this.cokPurchasedPerHour();
         this.sum =this. sum + numCokies;
-        //this.arrr.push(`${i} pm: ${numCokies} cookies`);
+        //arrr.push(`${i} pm: ${numCokies} cookies`);
         //this.arrr.push(numCokies);
         arrr.push(numCokies);
 
@@ -110,7 +119,7 @@ Location.prototype.calculateSum=function()
     for (var i = 1; i < 8; i++) {
         var numCokies = this.cokPurchasedPerHour();
         this.sum = this.sum + numCokies;
-        //this.arrr.push(`${i} pm: ${numCokies} cookies`);
+        //arrr.push(`${i} pm: ${numCokies} cookies`);
         //this.arrr.push(numCokies);
         arrr.push(numCokies);
 
@@ -124,26 +133,72 @@ Location.prototype.calculateSum=function()
    arrr.push(this.sum);
 
 //return this.arrr;
-return arrr;*/
-for (var i = 0; i < hours.length; i++) {
+return arrr;}
+
+Location.prototype.summtot=function()
+{ this.sum = 0;
+    //this.arrr = [];
+    sumArray=[];
+    for (var i = 6; i < 12; i++) {
+        var numCokies = this.cokPurchasedPerHour()
+        this.sum = this.sum + numCokies;
+        //alert(i + 'am:' + numCokies + 'cookies');
+        //this.arrr.push(`${i} am: ${numCokies} cookies`);
+        //this.arrr.push(numCokies);
+        sumArray.push(this.sum);
+
+        
+        
+    }
+    for (var i = 12; i < 13; i++) {
+        var numCokies = this.cokPurchasedPerHour();
+        this.sum =this. sum + numCokies;
+        //arrr.push(`${i} pm: ${numCokies} cookies`);
+        //this.arrr.push(numCokies);
+        sumArray.push(this.sum);
+
+        
+        
+        //alert(i + 'pm:' + numCokies + 'cookies');
+    }
+    for (var i = 1; i < 8; i++) {
+        var numCokies = this.cokPurchasedPerHour();
+        this.sum = this.sum + numCokies;
+        //arrr.push(`${i} pm: ${numCokies} cookies`);
+        //this.arrr.push(numCokies);
+        sumArray.push(this.sum);
+
+
+        
+        //alert(i + 'pm:' + numCokies + 'cookies');
+    }
+    
+    
+   // this.arrr.push(this.sum);
+   sumArray.push(this.sum);
+
+//return this.arrr;
+return sumArray;}
+/*for (var i = 0; i < hours.length; i++) {
     var numCokies = this.cokPurchasedPerHour();
     this.sum = this.sum + numCokies;
     //this.arrr.push(`${i} pm: ${numCokies} cookies`);
     //this.arrr.push(numCokies);
     arrr.push(numCokies);
+    //arrr.push(`${i} pm: ${numCokies} cookies`);
     
     
     
     
     
-}
+}*/
 
 
 // this.arrr.push(this.sum);
-arrr.push(this.sum);
+//arrr.push(this.sum);
 
 //return this.arrr;
-return arrr;}
+//return arrr;}
     //alert(this.arrr);}
 
     Location.prototype.sales=function()
@@ -194,9 +249,11 @@ return arrr;}
         var dataEl=document.createElement('tr');
     tableEl.appendChild(dataEl);
     var tdE0=document.createElement('td');
+    tdE0.textContent=this.locationName;
+
     dataEl.appendChild(tdE0);
 
-    tdE0.textContent=this.locationName;
+    //tdE0.textContent=this.locationName;
     var array=this.calculateSum();
     for(let i=0;i<array.length;i++)
     {
@@ -206,6 +263,11 @@ return arrr;}
     
     
     }
+//had ta2kod men s7toh
+    for(let i=0;i<tot.length;i++)
+{var tdE2=document.createElement('td');
+tdE2.textContent=sumArray[i];
+dataEl.appendChild(tdE2);}
     }
 
 
@@ -219,7 +281,7 @@ function renderHeader()
 tableEl.appendChild(headerEl);
 var th1El=document.createElement('th');
 headerEl.appendChild(th1El);
-th1El.textContent=" ";
+//th1El.textContent=" ";
 for (let i=6;i<12;i++)
 {var thEl=document.createElement('th');
 headerEl.appendChild(thEl);
@@ -244,7 +306,19 @@ tableEl.appendChild(trEl);
 var tddEl=document.createElement('td');
 trEl.appendChild(tddEl);
 tddEl.textContent="Total";
-for(let i=0;i<tot.length;i++)
+/*var sumtotal=0;
+var myArray=this.summtot();
+for (var i = 0; i < hours.length; i++)
+{for (let i=0;i<myArray.length;i++){
+    sumtotal=sumtotal+myArray[i];
+    var tdE3=document.createElement('td');
+tdE3.textContent=myArray[i];
+trEl.appendChild(tdE3);
+
+}}
+*/
+}
+/*for(let i=0;i<tot.length;i++)
 {
 var tdE3=document.createElement('td');
 tdE3.textContent=tot[i];
@@ -265,7 +339,7 @@ tdE4.textContent=summation;
 
 trEl.appendChild(tdE4);
 
-}
+}*/
 
 
 
@@ -316,7 +390,7 @@ for (let i=1;i<8;i++)
     trEl.appendChild(tdE6);}*/
 
 
-}
+
 
 
 
@@ -326,21 +400,25 @@ function handleSubmit()
 {
     event.preventDefault();
     var name=event.target.name.value;
-    var maxHours=event.target.maxHours.value;
-    var minHours=event.target.minHours.value;
-    var avgCook=event.target.avgCook.value;
+   // ma3na aljomleh i'm targeting the value inside the input field
+   //event.target.maxHours.value hay aljomleh dayman btraje3 string fa lazem a3mel parseInt eza bedi ra8am
+    var maxHours=parseInt(event.target.maxHours.value);
+    var minHours=parseInt(event.target.minHours.value);
+    var avgCook=parseFloat(event.target.avgCook.value);
     var newLocation=new Location(name,maxHours,minHours,avgCook );
+    loc.push(newLocation);
+    //7ada yefahmni had ..
+
+    var rowCount=tableEl.rows.length;
+    tableEl.deleteRow(rowCount-1);
     newLocation.render();
-}
+    renderFooter();
+    form.reset();}
+    //mo shart submit momken a3mel listen la 2ay event tani
 
 form.addEventListener('submit',handleSubmit)
 
 
-var seattle=new Location('Seattle',23,65,6.3);
-var tokyo=new Location("Tokyo",3,24,1.2);
-var dubai=new Location("Dubai",11,38,3.7);
-var paris=new Location("Paris",20,38,2.3);
-var lima=new Location("Lima",2,16,4.6);
 
 
 for(let i=0;i<loc.length;i++){
@@ -351,6 +429,6 @@ for(let i=0;i<loc.length;i++){
 
     
    
-    renderFooter();
+   
     
-
+    renderFooter();
