@@ -1,6 +1,8 @@
 'use strict'
 var loc= [];
 var locName=[];
+var form=document.getElementById("locationsForm");
+
 var tot=[];
 var arrr=[];
 var hours=['6a.m','7a.m','8a.m','9a.m','10a.m','11a.m','12p.m','1p.m','2p.m','3p.m','4p.m','5p.m','6p.m','7p.m'];
@@ -319,6 +321,19 @@ for (let i=1;i<8;i++)
 
 
 renderHeader();
+
+function handleSubmit()
+{
+    event.preventDefault();
+    var name=event.target.name.value;
+    var maxHours=event.target.maxHours.value;
+    var minHours=event.target.minHours.value;
+    var avgCook=event.target.avgCook.value;
+    var newLocation=new Location(name,maxHours,minHours,avgCook );
+    newLocation.render();
+}
+
+form.addEventListener('submit',handleSubmit)
 
 
 var seattle=new Location('Seattle',23,65,6.3);
