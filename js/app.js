@@ -54,7 +54,7 @@ return num;}
 Location.prototype.cokPurchasedPerHour=function()
 { var h = Math.floor((this.numberOfCustPerHour()) * (this.avgCokPerCust));
     //alert('number of purchased cookies per hour');
-    console.log(h)
+    //console.log(h)
     //alert(h);
     return h;}
 
@@ -85,7 +85,7 @@ Location.prototype.createList=function()
 
         ulEl.appendChild(liEl);
         liEl.textContent = arr[i];
-        console.log(liEl);
+       // console.log(liEl);
     }
 
 }
@@ -94,7 +94,7 @@ Location.prototype.calculateSum=function()
 { this.sum = 0;
     //this.arrr = [];
     arrr=[];
-    for (var i = 6; i < 12; i++) {
+   /* for (var i = 6; i < 12; i++) {
         var numCokies = this.cokPurchasedPerHour()
         this.sum = this.sum + numCokies;
         //alert(i + 'am:' + numCokies + 'cookies');
@@ -126,6 +126,15 @@ Location.prototype.calculateSum=function()
 
         
         //alert(i + 'pm:' + numCokies + 'cookies');
+    }*/
+    for (let i=0;i<hours.length;i++){
+        var numCokies = this.cokPurchasedPerHour()
+        this.sum = this.sum + numCokies;
+        //alert(i + 'am:' + numCokies + 'cookies');
+        //this.arrr.push(`${i} am: ${numCokies} cookies`);
+        //this.arrr.push(numCokies);
+        arrr.push(numCokies);
+        
     }
     
     
@@ -139,7 +148,15 @@ Location.prototype.summtot=function()
 { this.sum = 0;
     //this.arrr = [];
     sumArray=[];
-    for (var i = 6; i < 12; i++) {
+    for(let i=0;i<hours.length;i++){
+        var numCokies = this.cokPurchasedPerHour()
+        this.sum = this.sum + numCokies;
+        //alert(i + 'am:' + numCokies + 'cookies');
+        //this.arrr.push(`${i} am: ${numCokies} cookies`);
+        //this.arrr.push(numCokies);
+        sumArray.push(this.sum);
+    }
+    /*for (var i = 6; i < 12; i++) {
         var numCokies = this.cokPurchasedPerHour()
         this.sum = this.sum + numCokies;
         //alert(i + 'am:' + numCokies + 'cookies');
@@ -171,7 +188,7 @@ Location.prototype.summtot=function()
 
         
         //alert(i + 'pm:' + numCokies + 'cookies');
-    }
+    }*/
     
     
    // this.arrr.push(this.sum);
@@ -215,7 +232,7 @@ return sumArray;}
         var liiEl = document.createElement("li");
         ullEl.appendChild(liiEl);
         liiEl.textContent = arrr[i];
-        console.log(liiEl);
+        //console.log(liiEl);
         
     }}
 
@@ -263,12 +280,12 @@ return sumArray;}
     
     
     }
-//had ta2kod men s7toh
-    for(let i=0;i<tot.length;i++)
-{var tdE2=document.createElement('td');
-tdE2.textContent=sumArray[i];
-dataEl.appendChild(tdE2);}
-    }
+    //had ta2kod men s7toh
+        for(let i=0;i<tot.length;i++)
+    {var tdE2=document.createElement('td');
+    tdE2.textContent=sumArray[i];
+    dataEl.appendChild(tdE2);}
+        }
 
 
    
@@ -306,6 +323,42 @@ tableEl.appendChild(trEl);
 var tddEl=document.createElement('td');
 trEl.appendChild(tddEl);
 tddEl.textContent="Total";
+
+function computeTableColumnTotal(colNumber)
+{
+  // return the total of the numerical elements in column colNumber
+  // skip the top row (headers) and bottom row (where the total will go)
+		
+  var result = 0;
+		
+    var i;
+    var howManyRows = tableEl.rows.length;
+
+    for (i=1; i<(howManyRows-1); i++) // skip first and last row (hence i=1, and howManyRows-1)
+    {
+       var thisTrElem = tableEl.rows[i];
+       var thisTdElem = thisTrElem.cells[colNumber];			
+       var thisTextNode = thisTdElem.childNodes.item(0);
+     
+
+       // try to convert text to numeric
+       var thisNumber = parseFloat(thisTextNode.data);
+       // if you didn't get back the value NaN (i.e. not a number), add into result
+       if (!isNaN(thisNumber))
+         result += thisNumber;
+     } // end for
+     return result
+    }
+ 
+   
+    for (var i = 1; i <arrr.length+1; i++) {
+        var t = computeTableColumnTotal(i)
+        var tddEl=document.createElement('td');
+        tddEl.textContent=t;
+        trEl.appendChild(tddEl);
+        //console.log(liiEl);
+        
+    }
 /*var sumtotal=0;
 var myArray=this.summtot();
 for (var i = 0; i < hours.length; i++)
@@ -395,6 +448,7 @@ for (let i=1;i<8;i++)
 
 
 renderHeader();
+
 
 function handleSubmit()
 {
